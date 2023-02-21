@@ -8,8 +8,12 @@
 
 int main(void)
 {
-	char letter = 'p';
+	char text[9] = "_putchar\n";
+	int i;
 
-	_putchar(letter);
+	for (i = 0; i <= 9; i++)
+	{
+		_putchar(text[i]);
+	}
 	return (0);
 }
