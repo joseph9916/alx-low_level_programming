@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * print_alphabet - print the alphabetx10
+ * print_alphabet_x10 - print the alphabetx10
  *
  * Return: O Always Success
  */
