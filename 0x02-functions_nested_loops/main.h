@@ -1,13 +1,2 @@
-#include <stdio.h>
-
-/**
- * main - print _putchar
- *
- * Return: Always 0. (Success)
- */
-
-int main(void)
-{
-	_putchar();
-	return(0);
-}
+int _putchar(char c);
+void print_alphabet(void);
