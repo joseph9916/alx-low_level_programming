@@ -1,9 +1,10 @@
 #include "main.h"
 
 /**
- * main - Find if the input letter in an uppercase
+ * _isupper - Find if the input letter in an uppercase
  *
- * Retun: 1 if uppercase 0 otherwise
+ * @c: the letter input to check
+ * Return: 1 if uppercase 0 otherwise
  */
 
 int _isupper(int c)
