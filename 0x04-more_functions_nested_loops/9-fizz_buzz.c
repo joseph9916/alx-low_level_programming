@@ -5,6 +5,8 @@
  * if divisible by 3 print fizz
  * if divisible by 5 print buzz
  * if divisible by both print fizzbuzz
+ *
+ * Return: 0 Always (Success)
  */
 
 int main(void)
@@ -20,9 +22,9 @@ int main(void)
 		else if (i % 5 == 0)
 			printf("Buzz ");
 		else
-			printf("%d ",i);
+			printf("%d ", i);
 	}
 	printf("\n");
-	
+
 	return (0);
 }
