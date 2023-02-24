@@ -10,7 +10,7 @@
 void print_number(int n)
 {
 	/*AN interger to get the integer division of i*/
-	long j = 10;
+	int j = 10;
 
 	if (n == 0)
 		_putchar('0');
