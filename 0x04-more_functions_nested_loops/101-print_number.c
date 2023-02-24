@@ -12,15 +12,15 @@ void print_number(int n)
 	/*AN interger to get the integer division of i*/
 	int j = 10;
 
-	if (n == 0)
-		_putchar('0');
+	if (n < 0)
+	{
+		_putchar('-');
+		n = n * -1;
+	}
+	if (n >= 0 && n < 10)
+		_putchar('0' + n);
 	else
 	{
-		if (n < 0)
-		{
-			_putchar('-');
-			n = n * -1;
-		}
 		while (n / j >= 10)
 			j = j * 10;
 		while (j >= 10)
