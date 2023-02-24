@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * print_numbers - print the numbers 0-9;
+ * print_most_numbers - print the numbers 0-9;
  *
  * Return: O Always Success
  */
 
-void print_numbers(void)
+void print_most_numbers(void)
 {
 	char c;
 
