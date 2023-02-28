@@ -8,6 +8,7 @@
 void _puts(char *str)
 {
 	char *tmp_address = str;
+
 	while (*tmp_address != '\0')
 	{
 		_putchar(*tmp_address);
