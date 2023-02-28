@@ -2,8 +2,10 @@
 
 /**
  * _strcpy - Cpoies string src to dest
- * dest: Destination string
- * src: Source string
+ * @dest: Destination string
+ * @src: Source string
+ * Return: The starting pointer of destination
+ * Meaning I won't increment dest pointer
  */
 
 char *_strcpy(char *dest, char *src)
@@ -20,4 +22,4 @@ char *_strcpy(char *dest, char *src)
 	/*So we add the null character to it*/
 	*(dest + i++) = *src++;
 	return (dest);
-}	
+}
