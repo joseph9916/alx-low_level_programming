@@ -3,6 +3,7 @@
 /**
  * _strlen - Counts the value of characters
  * @s: The pointer of string
+ * Return: i lentgth of String
  */
 
 int _strlen(char *s)
