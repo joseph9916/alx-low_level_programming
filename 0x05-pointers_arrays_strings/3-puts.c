@@ -14,6 +14,5 @@ void _puts(char *str)
 		_putchar(*tmp_address);
 		tmp_address++;
 	}
-	_putchar('\0');
 	_putchar('\n');
 }
