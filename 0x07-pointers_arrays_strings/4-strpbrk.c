@@ -2,7 +2,7 @@
 #include <stddef.h>
 
 /**
- *  strbrk - Returns the pointer which consist only of bytes from accept
+ *  _strpbrk - Returns the pointer which consist only of bytes from accept
  *  @s: The string
  *  @accept: the substring
  *  Return: the length of substring found in s
