@@ -14,9 +14,10 @@ int main(void)
 	{
 		for (j = 48; j <= 57; j++)
 		{
+			l = j + 1;
 			for (k = i; k <= 57; k++)
 			{
-				for (l = j + 1; l <= 57; l++)
+				while (l <= 57)
 				{
 					putchar(i);
 					putchar(j);
@@ -29,7 +30,9 @@ int main(void)
 						putchar(44);
 						putchar(32);
 					}
+					l++;
 				}
+				l = 48;
 			}
 		}
 	}
