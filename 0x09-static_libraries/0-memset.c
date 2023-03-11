@@ -1,12 +1,21 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
- * main - print hi
- * Return: 0 Always success
+ * _memset - Fills a memory area with a constant byte
+ * @s: Memory area
+ * @b: Constant byte
+ * @n: n bytes of memoryto fill
+ * Return: Return pointer to memory area s
  */
 
-int main(void)
+char *_memset(char *s, char b, unsigned int n)
 {
-	printf("hi");
-	return (0);
+	char *p = s;
+
+	while (n--)
+	{
+		*p = b;
+		p++;
+	}
+	return (s);
 }
