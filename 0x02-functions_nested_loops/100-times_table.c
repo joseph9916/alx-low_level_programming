@@ -1,16 +1,17 @@
 #include "main.h"
 
 /**
- * times_table - prints the times tabe a * b
+ * print_times_table - prints the times tabe a * b till n
+ * @n: number of times table
  */
 
-void times_table(void)
+void print_times_table(int n)
 {
 	int a, b;
 
-	for (a = 0; a <= 9; a++)
+	for (a = 0; a <= n; a++)
 	{
-		for (b = 0; b <= 9; b++)
+		for (b = 0; b <= n; b++)
 		{
 			if (b > 0)
 			{
