@@ -4,6 +4,7 @@
 
 /**
  * free_grid - Free a grid from the space allocated to it
+ * @grid: grid to free
  * @height: height of grid
  */
 
