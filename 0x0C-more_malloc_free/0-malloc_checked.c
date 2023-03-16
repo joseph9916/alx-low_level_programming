@@ -5,6 +5,7 @@
 /**
  * malloc_checked - Allocates a space of size n
  * @b: size of allocated space
+ * Return: Return pointer address of the allocated space
  */
 
 void *malloc_checked(unsigned int b)
