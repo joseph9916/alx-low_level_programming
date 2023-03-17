@@ -23,7 +23,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		free(ptr);
 		return (NULL);
 	}
-	bzero (ptr, (nmemb * size));
+	bzero(ptr, (nmemb * size));
 
 	return (ptr);
 }
