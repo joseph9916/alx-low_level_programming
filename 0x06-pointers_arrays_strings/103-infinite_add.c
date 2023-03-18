@@ -19,36 +19,36 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		len1++;
 	while (n2[len2] != '\0')
 		len2++;
-
 	if ((len1 >= size_r - 1) || (len2 >= size_r - 1))
 		return (0);
-
-
 	for (i = 0; i < size_r; i++)
 		r[i] = '0';
-
-	len_r = size_r;
+	if (len1 > len2)
+		len_r = len1;
+	else
+		len_r = len2;
+	r[len_r + 1] = '\0';
 	while (len1 > 0 || len2 > 0)
 	{
 		if (len1 > 0 && len2 > 0)
-			r[size_r - 1] += n1[len1 - 1] + n2[len2 - 1] - 2 * '0';
+			r[len_r] += n1[len1 - 1] + n2[len2 - 1] - (2 * '0');
 		if (len2 <= 0)
-			r[size_r - 1] += n1[len1 - 1]  - '0';
+			r[len_r] += n1[len1 - 1]  - '0';
 		if (len1 <= 0)
-			r[size_r - 1] += n2[len2 - 1]  - '0';
-		if (r[size_r - 1] > '9')
+			r[len_r] += n2[len2 - 1]  - '0';
+		if (r[len_r] > '9')
 		{
-			r[size_r - 2] += 1;
-			r[size_r - 1] -= 10;
+			r[len_r - 1] += 1;
+			r[len_r] -= 10;
 		}
 		len1--;
 		len2--;
-		size_r--;
+		len_r--;
 	}
-	for (i = 0; i < len_r - size_r; i++)
+	if (r[0] == '0')
 	{
-		r[i] = r[i + size_r - 1];
+		for (i = 1; r[i] != '\0'; i++)
+			r[i - 1] = r[i];
 	}
-	r[i + size_r] = '\0';
 	return (r);
 }
