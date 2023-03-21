@@ -1,5 +1,6 @@
 #include "dog.h"
 #include <stdio.h>
+#include <stddef.h>
 
 /**
  * print_dog - print the parameters of the dog strunture
@@ -8,5 +9,12 @@
 
 void print_dog(struct dog *d)
 {
-	printf("Name: %s\nAge: %f\nOwner: %s\n", d->name, d->age, d->owner);
+	if (d == NULL)
+		return;
+	if (d->name != NULL)
+		printf("%s\n", d->name);
+	if (d->age != NULL)
+		printf("%f\n", d->age);
+	if (d->owner != NULL)
+		printf("%s\n", d->owner);
 }
