@@ -3,7 +3,8 @@
 #include <stddef.h>
 
 /**
- * d - dog to free memory of
+ * free_dog - free memory of a structure
+ * @d: dog structure to free memory of
  */
 
 void free_dog(dog_t *d)
