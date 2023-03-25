@@ -19,7 +19,12 @@ int int_index(int *array, int size, int (*cmp)(int))
 	if (array == NULL)
 	{
 		free(array);
-		return(-1);
+		return (-1);
+	}
+	if (cmp == NULL)
+	{
+		free(cmp);
+		return (-1);
 	}
 	for (i = 0; i < size; i++)
 	{
