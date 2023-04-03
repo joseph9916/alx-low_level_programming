@@ -2,6 +2,7 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 /**
  * add_node_end - add a node to the end of a linked list
@@ -13,7 +14,7 @@
 list_t *add_node_end(list_t **head, const char *str)
 {
 	list_t *new_node;
-	struct list_t *cur_node;
+	list_t *cur_node = *head;
 
 	new_node = malloc(sizeof(list_t));
 	if (new_node == NULL)
@@ -29,8 +30,7 @@ list_t *add_node_end(list_t **head, const char *str)
 		*head = new_node;
 		return (*head);
 	}
-	cur_node = *head;
-	while (cur_node != NULL)
+	while (cur_node->next != NULL)
 		cur_node = cur_node->next;
 	cur_node->next = new_node;
 	return (*head);
