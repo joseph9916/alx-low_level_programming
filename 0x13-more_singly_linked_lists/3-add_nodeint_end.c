@@ -5,9 +5,9 @@
 #include <stdio.h>
 
 /**
- * add_node_end - add a node to the end of a linked list
+ * add_nodeint_end - add a node to the end of a linked list
  * @head: pointer to the head of the linked list
- * @str: str to copy to ths new head
+ * @n: number to append to the end of the list
  * Return: Address of new address
  */
 
