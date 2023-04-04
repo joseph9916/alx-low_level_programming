@@ -3,7 +3,7 @@
 #include <stddef.h>
 
 /**
- * free_listinz - free the memory allocation of linked list
+ * free_listint - free the memory allocation of linked list
  * @head: pointer to the linked list
  */
 
