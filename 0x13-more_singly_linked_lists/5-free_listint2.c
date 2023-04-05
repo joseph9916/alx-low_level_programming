@@ -10,13 +10,11 @@
 
 void free_listint2(listint_t **head)
 {
-	listint_t *curnode = *head, *temp;
+	listint_t *curnode, *temp;
 
-	if (*head == NULL)
-	{
-		printf("Freed!");
+	if (head == NULL)
 		return;
-	}
+	curnode = *head;
 	while (curnode != NULL)
 	{
 		temp = curnode;
