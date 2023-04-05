@@ -23,6 +23,16 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 	}
 	if (i != index || curnode == NULL)
 		return (-1);
-	prevnode->next = nextnode;
+	if (curnode == *head)
+	{
+		prevnode = *head;
+		*head = curnode->next;
+		free(prevnode);
+	}
+	else
+	{
+		prevnode->next = curnode->next;
+		free(curnode);
+	}
 	return (1);
 }
