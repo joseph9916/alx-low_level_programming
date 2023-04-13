@@ -21,8 +21,7 @@ int create_file(const char *filename, char *text_content)
 		return (-1);
 
 	fp = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
-	if (text_content != NULL)
-		bytes_written = write(fp, text_content, strlen(text_content));
+	bytes_written = write(fp, text_content, strlen(text_content));
 	close(fp);
 	if (bytes_written != -1)
 		return (1);
