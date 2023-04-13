@@ -4,6 +4,16 @@
 #include <stdlib.h>
 
 /**
+ * exit_100 - exit the program with 99
+ * @fd: name of file_descriptoor to print in error message
+ */
+
+void exit_100(int fd)
+{
+	dprintf(2, "Error: Can't close fd %d", fd);
+	exit(100);
+}
+/**
  * exit_99 - exit the program with 99
  * @filename: name of file to print in error message
  */
@@ -12,6 +22,17 @@ void exit_99(const char *filename)
 {
 	dprintf(2, "Error: Can't write to %s", filename);
 	exit(99);
+}
+
+/**
+ * exit_98 - exit the program with 99
+ * @filename: name of file to print in error message
+ */
+
+void exit_98(const char *filename)
+{
+	dprintf(2, "Error: Can't read from file %s", filename);
+	exit(98);
 }
 
 /**
@@ -33,32 +54,25 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 	f_from = open(argv[1], O_RDONLY);
-	nread = read(f_from, buffer, 1024);
-	if ((access(argv[1], F_OK) == -1) || f_from == -1 || nread == -1)
-	{
-		dprintf(2, "Error: Can't read from file %s", argv[1]);
-		exit(98);
-	}
+	if ((access(argv[1], F_OK) == -1) || f_from == -1)
+		exit_98(argv[1]);
 	f_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (f_to != -1)
 	{
-		nwrite = write(f_to, buffer, 1024);
-		if (nwrite == -1)
-			exit_99(argv[2]);
+		while ((nread = read(f_from, buffer, 1024) > 0))
+		{
+			nwrite = write(f_to, buffer, 1024);
+			if (nwrite == -1)
+				exit_99(argv[2]);
+		}
 	}
 	else
 		exit_99(argv[2]);
 	c_from = close(f_from);
 	if (c_from == -1)
-	{
-		exit(100);
-		dprintf(2, "Error: Can't close fd %d", f_from);
-	}
+		exit_100(f_from);
 	c_to = close(f_to);
 	if (c_to == -1)
-	{
-		exit(100);
-		dprintf(2, "Error: Can't close fd %d", f_to);
-	}
+		exit_100(f_to);
 	return (0);
 }
