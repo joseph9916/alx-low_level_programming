@@ -19,7 +19,7 @@ int create_file(const char *filename, char *text_content)
 	if (filename == NULL)
 		return (-1);
 	fp = open(filename, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
-	bytes_written = write(fp, text_content, strlen(text_content));
+	bytes_written = write(fp, text_content, (strlen(text_content) + 1));
 	printf("%lu, %s\n", strlen(text_content), text_content);
 	if (bytes_written != -1)
 		return (1);
