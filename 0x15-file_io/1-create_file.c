@@ -3,6 +3,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
+#include <sys/stat.h>
 
 /**
  * create_file - Create a file where filename is name of the file
@@ -14,13 +15,17 @@
 int create_file(const char *filename, char *text_content)
 {
 	int fp;
+	int result;
 	int bytes_written;
 
 	if (filename == NULL)
 		return (-1);
 	if (text_content == NULL)
 		return (0);
-	fp = open(filename, O_CREAT | O_WRONLY | O_TRUNC, S_IRUSR | S_IWUSR);
+	fp = open(filename, O_CREAT | O_WRONLY | O_TRUNC, 0600);
+	result = chmod(filename, S_IRUSR | S_IWUSR);
+	if (result == -1)
+		return (-1);
 	bytes_written = write(fp, text_content, (strlen(text_content) + 1));
 	close(fp);
 	if (bytes_written != -1)
