@@ -56,12 +56,12 @@ int main(int argc, char *argv[])
 	f_from = open(argv[1], O_RDONLY);
 	if ((access(argv[1], F_OK) == -1) || f_from == -1)
 		exit_98(argv[1]);
-	f_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	f_to = open(argv[2], O_CREAT | O_WRONLY | O_APPEND | O_TRUNC, 0664);
 	if (f_to != -1)
 	{
-		while ((nread = read(f_from, buffer, 1024) > 0))
+		while ((nread = read(f_from, buffer, 1024)) > 0)
 		{
-			nwrite = write(f_to, buffer, 1024);
+			nwrite = write(f_to, buffer, nread);
 			if (nwrite == -1)
 				exit_99(argv[2]);
 		}
