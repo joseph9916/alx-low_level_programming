@@ -14,9 +14,9 @@ int set_bit(unsigned long int *n, unsigned int index)
 
 	if (i >= ULONG_MAX)
 		return (-1);
-	/*if (i <= *n * 2)*/
-	*n = *n | i;
-	/*else
-		*n = *n + i;*/
+	if (i <= *n * 2)
+		*n = *n | i;
+	else
+		*n = *n + i;
 	return (1);
 }
