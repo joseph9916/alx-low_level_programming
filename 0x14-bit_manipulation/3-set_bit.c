@@ -10,7 +10,7 @@
 
 int set_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned long int i = (1 << index);
+	unsigned long int i = (1UL << index);
 
 	if (i >= ULONG_MAX)
 		return (-1);
