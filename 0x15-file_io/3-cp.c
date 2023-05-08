@@ -68,6 +68,8 @@ int main(int ac, char *av[])
 		exit_98(file_from);
 	fd_from = open(file_from, O_RDONLY);
 	fd_to = open(file_to, O_RDWR | O_CREAT | O_TRUNC, 0664);
+	if (fd_from == -1)
+		exit_98(file_from);
 	if (fd_to == -1)
 		exit_99(file_to);
 	if (buffer == NULL)
