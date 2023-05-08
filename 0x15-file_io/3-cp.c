@@ -23,7 +23,7 @@ void exit_100(int fd)
 
 void exit_99(const char *filename)
 {
-	dprintf(2, "Error: Can't write from %s\n", filename);
+	dprintf(2, "Error: Can't write to %s\n", filename);
 	exit(99);
 }
 
@@ -34,7 +34,7 @@ void exit_99(const char *filename)
 
 void exit_98(const char *filename)
 {
-	dprintf(2, "Error: Can't read from %s\n", filename);
+	dprintf(2, "Error: Can't read from file %s\n", filename);
 	exit(98);
 }
 
