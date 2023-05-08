@@ -2,6 +2,7 @@
 #include <unistd.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #define BUFSIZE 1024
 
 /**
@@ -69,14 +70,17 @@ int main(int ac, char *av[])
 	fd_to = open(file_to, O_RDWR | O_CREAT | O_TRUNC, 0664);
 	if (fd_to == -1)
 		exit_99(file_to);
-	bytes_read = read(fd_from, buffer, BUFSIZE);
-	while (bytes_read != 0)
+	if (buffer == NULL)
+	{
+		free(buffer);
+		return (-1);
+	}
+	while ((bytes_read = read(fd_from, buffer, BUFSIZE)) > 0)
 	{
 		if (bytes_read == -1)
 			exit_98(file_from);
-		if (write(fd_to, buffer, BUFSIZE) == -1)
+		if (write(fd_to, buffer, bytes_read) == -1)
 			exit_99(file_to);
-		bytes_read = read(fd_from, buffer, BUFSIZE);
 	}
 	if (close(fd_to) == -1)
 		exit_100(fd_to);
