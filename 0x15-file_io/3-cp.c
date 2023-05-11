@@ -12,7 +12,7 @@
 
 void exit_100(int fd)
 {
-	dprintf(2, "Error: Can't close fd %d\n", fd);
+	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 	exit(100);
 }
 
@@ -23,7 +23,7 @@ void exit_100(int fd)
 
 void exit_99(const char *filename)
 {
-	dprintf(2, "Error: Can't write to %s\n", filename);
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename);
 	exit(99);
 }
 
@@ -34,7 +34,7 @@ void exit_99(const char *filename)
 
 void exit_98(const char *filename)
 {
-	dprintf(2, "Error: Can't read from file %s\n", filename);
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filename);
 	exit(98);
 }
 
@@ -79,11 +79,11 @@ int main(int ac, char *av[])
 	}
 	while ((bytes_read = read(fd_from, buffer, BUFSIZE)) > 0)
 	{
-		if (bytes_read == -1)
-			exit_98(file_from);
 		if (write(fd_to, buffer, bytes_read) == -1)
 			exit_99(file_to);
 	}
+	if (bytes_read == -1)
+		exit_98(file_from);
 	if (close(fd_to) == -1)
 		exit_100(fd_to);
 	if (close(fd_from == -1))
