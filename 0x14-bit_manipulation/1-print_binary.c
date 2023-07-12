@@ -11,7 +11,7 @@ void print_binary(unsigned long int n)
 	unsigned long int i = 1;
 	int j = 0;
 
-	while (i <= n && j <= 63)
+	while (i <= n && j <= 64)
 	{
 		i = i << 1;
 		j++;
