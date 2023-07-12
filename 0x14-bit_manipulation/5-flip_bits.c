@@ -3,6 +3,7 @@
 /**
  * count_ones - count the ones flipped
  * @no: numbber of ones flipped
+ * Return: the number of ones
  */
 
 unsigned int count_ones(unsigned long int no)
