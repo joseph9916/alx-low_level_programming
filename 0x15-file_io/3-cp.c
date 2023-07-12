@@ -22,7 +22,7 @@ void exit_97(void)
 
 void exit_98(char *file_from)
 {
-	dprintf(2, "Can't read from file %s\n", file_from);
+	dprintf(2, "Error: Can't read from file %s\n", file_from);
 	exit(98);
 }
 
@@ -33,7 +33,7 @@ void exit_98(char *file_from)
 
 void exit_99(char *file_to)
 {
-	dprintf(2, "Can't write to %s\n", file_to);
+	dprintf(2, "Error: Can't write to %s\n", file_to);
 	exit(99);
 }
 
