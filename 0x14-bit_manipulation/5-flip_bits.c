@@ -1,5 +1,10 @@
 #include "main.h"
 
+/**
+ * count_ones - count the ones flipped
+ * @no: numbber of ones flipped
+ */
+
 unsigned int count_ones(unsigned long int no)
 {
 	unsigned long int i = 1;
