@@ -22,7 +22,7 @@ void exit_97(void)
 
 void exit_98(char *file_from)
 {
-	dprintf(2, "Error: Can't read from file %s\n", file_from);
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 	exit(98);
 }
 
