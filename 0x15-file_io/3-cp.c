@@ -72,7 +72,7 @@ int main(int ac, char *av[])
 		exit_99(av[2]);
 	bytes_read = read(fd_from, buffer, BUFSIZE);
 	if (bytes_read < 0)
-		exit_99(av[1]);
+		exit_98(av[1]);
 	while (bytes_read > 0)
 	{
 		bytes_written = write(fd_to, buffer, bytes_read);
