@@ -27,9 +27,16 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	no_of_read = read(fp, buf, letters);
 	if (no_of_read < 0)
+	{
+		close(fp);
 		return (0);
+	}
 	no_write = write(STDOUT_FILENO, buf, no_of_read);
 	if (no_write < 0)
+	{
+		close(fp);
 		return (0);
+	}
+	close(fp);
 	return (no_write);
 }
