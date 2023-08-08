@@ -68,7 +68,11 @@ int main(int ac, char *av[])
 	no_of_read = read(fd_from, buf, BUFSIZE);
 	if (no_of_read < 0)
 		exit_98(av[1]);
-	fd_to = open(av[2], O_RDWR | O_CREAT | O_TRUNC, 0664);
+	n = access(av[2], F_OK);
+	if (n)
+		fd_to = open(av[2], O_RDWR | O_CREAT | O_TRUNC, 0664);
+	else
+		fd_to = open(av[2], O_RDWR | O_TRUNC);
 	if (fd_to < 0)
 		exit_99(av[2]);
 	while (no_of_read > 0)
