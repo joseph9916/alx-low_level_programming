@@ -10,7 +10,7 @@
 
 void exit_97(void)
 {
-	dprintf(2, "Usage: cp file_from file_to");
+	dprintf(2, "Usage: cp file_from file_to\n");
 	exit(97);
 }
 
@@ -21,7 +21,7 @@ void exit_97(void)
 
 void exit_98(const char *filename)
 {
-	dprintf(2, "Error: Can't read from file %s", filename);
+	dprintf(2, "Error: Can't read from file %s\n", filename);
 	exit(98);
 }
 
@@ -32,7 +32,7 @@ void exit_98(const char *filename)
 
 void exit_99(const char *filename)
 {
-	dprintf(2, "Error: Can't write to %s", filename);
+	dprintf(2, "Error: Can't write to %s\n", filename);
 	exit(99);
 }
 
@@ -43,7 +43,7 @@ void exit_99(const char *filename)
 
 void exit_100(int fp)
 {
-	dprintf(2, "Error: Can't close fd %d", fp);
+	dprintf(2, "Error: Can't close fd %d\n", fp);
 	exit(100);
 }
 
