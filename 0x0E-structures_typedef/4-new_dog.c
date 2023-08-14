@@ -12,21 +12,24 @@
 
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	struct dog *new_dog;
-
-	char *name_copy __attribute__((unused)) = name;
-	char *owner_copy __attribute__((unused)) = owner;
+	char *name_copy, *owner_copy;
+	int n;
 
 	new_dog = malloc(sizeof(dog_t));
-	if (new_dog == NULL)
-	{
-		free(new_dog->name);
-		free(new_dog->owner);
-		free(new_dog);
+	if (!new_dog)
 		return (NULL);
-	}
-	new_dog->name = name;
+	for (n = 0; name[n]; n++)
+		;
+	name_copy = malloc(n);
+	for (n = 0; owner[n]; n++)
+		;
+	owner_copy = malloc(n);
+	for (n = 0; name[n]; n++;)
+		name_copy[n] = name[n];
+	for (n = 0; owner[n]; n++)
+		owner_copy[n] = owner[n]
+	new_dog->name = name_copy;
 	new_dog->age = age;
-	new_dog->owner = owner;
+	new_dog->owner = owner_copy;
 	return (new_dog);
 }
