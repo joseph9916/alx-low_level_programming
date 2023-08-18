@@ -26,7 +26,8 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	if (curnode == *head)
 	{
 		*head = curnode->next;
-		*head->prev = NULL;
+		if (*head)
+			(*head)->prev = NULL;
 		free(prevnode);
 	}
 	else
