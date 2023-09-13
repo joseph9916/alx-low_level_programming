@@ -18,14 +18,13 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 
 	if (!ht || !key)
 		return (NULL);
-	index = key_index((const unsigned char *) key, 1024);
+	index = key_index((const unsigned char *) key, ht->size);
 	key_node = ht->array[index];
 	if (!key_node)
 		return (NULL);
 
 	while (key_node)
 	{
-		printf("%s", key_node->value);
 		if (!(strcmp(key_node->key, key)))
 			return (key_node->value);
 		key_node = key_node->next;
