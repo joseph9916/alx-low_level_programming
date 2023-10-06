@@ -3,77 +3,87 @@
 #include <string.h>
 
 /**
- * create_hash_node - creates a hash node
- * @key: key of the node
- * @value: value of the node
- * Return: hash_node created
+ * create_key_node - creates a node in hash table
+ * @key: key to find
+ * @value: value
+ * Return: Address to key_node
  */
 
-hash_node_t *create_hash_node(char *key, char *value)
+hash_node_t *create_key_node(const char *key, const char *value)
 {
 	hash_node_t *node;
-	char *key_cpy;
+	char *val_cpy, *key_cpy;
 
 	node = malloc(sizeof(hash_node_t));
 	if (!node)
+		return (NULL);
+	val_cpy = malloc(strlen(value) + 1);
+	if (!val_cpy)
 	{
-		free(value);
+		free(node);
 		return (NULL);
 	}
 	key_cpy = malloc(strlen(key) + 1);
+	if (!key_cpy)
+	{
+		free(node);
+		free(val_cpy);
+		return (NULL);
+	}
+	strcpy(val_cpy, value);
 	strcpy(key_cpy, key);
 	node->key = key_cpy;
-	node->value = value;
+	node->value = val_cpy;
 	return (node);
 }
 
 /**
  * hash_table_set - a function that adds an element to the hash table.
- * @ht: hash table
- * @key: is the key and it can not be an empty string
- * @value: is the value associated with the key.
- * Return: 1 if it succeeded, 0 otherwise
+ * @key: key of the value
+ * @value: value
+ * Return: 1 if succussful 0 otherwise
  */
 
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long index;
-	char *value_cpy;
-	hash_node_t *new_node, *keynode;
+	unsigned long int index;
+	char *val_cpy;
+	hash_node_t *key_node, *prev_node;
 
-	value_cpy = malloc(strlen(value) + 1);
-	if (!value_cpy)
+	if (!ht)
 		return (0);
-	strcpy(value_cpy, value);
-	index = key_index((unsigned char *) key, ht->size);
-	if (!(strlen(key)))
+	if (!strlen(key))
 		return (0);
-
+	index =  key_index((const unsigned char *)key, ht->size);
 	if (!ht->array[index])
 	{
-		new_node = create_hash_node((char *) key, value_cpy);
-		if (!new_node)
+		key_node = create_key_node(key, value);
+		if (!key_node)
 			return (0);
-		ht->array[index] = new_node;
-		ht->array[index]->next = NULL;
+		ht->array[index] = key_node;
 		return (1);
 	}
-	keynode = ht->array[index];
-	while (keynode->next)
+	key_node = ht->array[index];
+	while (key_node)
 	{
-		if (!strcmp(keynode->key, key))
+		if (!strcmp((key), key_node->key))
 		{
-			free(keynode->value);
-			keynode->value = value_cpy;
+			val_cpy = malloc(strlen(value) + 1);
+			if (!val_cpy)
+				return (0);
+			strcpy(val_cpy, value);
+			free(key_node->value);
+			key_node->value = val_cpy;
 			return (1);
 		}
-		keynode = keynode->next;
+		prev_node = key_node;
+		key_node = key_node->next;
 	}
-	new_node = create_hash_node((char *) key, value_cpy);
-	if (!new_node)
+	key_node = create_key_node(key, value);
+	if (!key_node)
 		return (0);
-	keynode->next = new_node;
-	new_node->next = NULL;
+	prev_node->next = key_node;
+	key_node->next = NULL;
 
 	return (1);
 }

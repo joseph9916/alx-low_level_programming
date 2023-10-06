@@ -1,14 +1,12 @@
 #include "hash_tables.h"
-#include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
+#include <stdio.h>
 
 /**
- * hash_table_get - a function that retrieves a value associated with a key
- * @ht: the hash table
- * @key: the key we are looking for
- * Return: the value associated with the element,
- * or NULL if key couldn't be found
+ * hash_table_get - a function that retrieves a value associated with a key.
+ * @ht: hash table
+ * @key: key to find
+ * Return: value found
  */
 
 char *hash_table_get(const hash_table_t *ht, const char *key)
@@ -16,16 +14,15 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	unsigned long int index;
 	hash_node_t *key_node;
 
-	if (!ht || !key)
+	if (!ht || !ht->array)
 		return (NULL);
-	index = key_index((const unsigned char *) key, ht->size);
+	index = key_index((const unsigned char *)key, ht->size);
+	if (!ht->array[index])
+		return (NULL);
 	key_node = ht->array[index];
-	if (!key_node)
-		return (NULL);
-
 	while (key_node)
 	{
-		if (!(strcmp(key_node->key, key)))
+		if (!strcmp(key, key_node->key))
 			return (key_node->value);
 		key_node = key_node->next;
 	}
