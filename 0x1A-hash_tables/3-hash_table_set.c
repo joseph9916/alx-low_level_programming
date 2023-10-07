@@ -48,7 +48,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	unsigned long int index;
 	char *val_cpy;
-	hash_node_t *key_node, *prev_node;
+	hash_node_t *key_node;
 
 	if (!ht)
 		return (0);
@@ -76,14 +76,12 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 			key_node->value = val_cpy;
 			return (1);
 		}
-		prev_node = key_node;
 		key_node = key_node->next;
 	}
 	key_node = create_key_node(key, value);
 	if (!key_node)
 		return (0);
 	key_node->next = ht->array[index];
-	ht->array[index] = keynode;
-
+	ht->array[index] = key_node;
 	return (1);
 }
