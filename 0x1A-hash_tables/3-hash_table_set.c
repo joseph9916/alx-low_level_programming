@@ -39,6 +39,7 @@ hash_node_t *create_key_node(const char *key, const char *value)
 
 /**
  * hash_table_set - a function that adds an element to the hash table.
+ * @ht: hash table
  * @key: key of the value
  * @value: value
  * Return: 1 if succussful 0 otherwise
