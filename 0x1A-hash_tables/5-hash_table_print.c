@@ -27,12 +27,12 @@ void hash_table_print(const hash_table_t *ht)
 	{
 		if (ht->array[i])
 		{
-			if (j)
-				printf(", ");
-			j = 1;
 			key_node = ht->array[i];
 			while (key_node)
 			{
+				if (j)
+					printf(", ");
+				j = 1;
 				printf("'%s': '%s'", key_node->key, key_node->value);
 				key_node = key_node->next;
 			}

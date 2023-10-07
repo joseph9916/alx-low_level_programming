@@ -82,8 +82,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	key_node = create_key_node(key, value);
 	if (!key_node)
 		return (0);
-	prev_node->next = key_node;
-	key_node->next = NULL;
+	key_node->next = ht->array[index];
+	ht->array[index] = keynode;
 
 	return (1);
 }

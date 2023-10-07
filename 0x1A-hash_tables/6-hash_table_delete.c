@@ -27,11 +27,12 @@ void hash_table_delete(hash_table_t *ht)
 			prevnode = keynode;
 			keynode = keynode->next;
 			free(prevnode->key);
-			if (prevnode->value)
-				free(prevnode->value);
+			free(prevnode->value);
 			free(prevnode);
 		}
 	}
-	free(ht->array);
-	free(ht);
+	if (ht->array)
+		free(ht->array);
+	if (ht)
+		free(ht);
 }
